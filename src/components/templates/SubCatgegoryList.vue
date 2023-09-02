@@ -11,17 +11,35 @@ const books = contents['book_list']
 </script>
 
 <template>
-  <div>
-    <h3>{{ name }}</h3>
-    <div class="c-booklist">
+  <div class="c-subcategory">
+    <div class="c-subcategory__header">
+      <h3>{{ name }}</h3>
+    </div>
+    <div class="c-subcategory__booklist">
       <PartsBookCard v-for="(book,index) in books" :key="index" :book="book"/>
     </div>
   </div>
 </template>
 
-<style scoped>
-.c-booklist {
+<style lang="scss" scoped>
+.c-subcategory {
   width: 100%;
-  display: flex;
+  margin-bottom: 30px;
+  &__header {
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    h3 {
+      font-size: 16px;
+      font-weight: 700;
+    }
+  }
+  &__booklist {
+    width: 100%;
+    padding: 0 15px;
+    display: flex;
+    overflow: auto;
+  }
 }
 </style>

@@ -45,7 +45,7 @@ const changeCategory = (category: string) => {
     <div class="p-home">
       <nav class="p-home__nav">
         <ul class="p-home__nav__list">
-          <li
+          <li class="p-home__nav__list__item"
             v-for="category in topCateogyList"
             :key="`nav_${category.id}`"
             @click="changeCategory(category.id)"
@@ -64,31 +64,34 @@ const changeCategory = (category: string) => {
     </div>
 </template>
 
-<style>
+<style lang="scss" scoped>
 .p-home {
   width: 100%;
   overflow: hidden;
+  &__nav {
+    max-width: 960px;
+    margin: 0 auto;
+    &__list {
+      display: flex;
+      overflow: auto;
+      &__item {
+        width: 100px;
+        flex-shrink: 0;
+        padding: 10px 0;
+        text-align: center;
+        font-size: 14px;
+        font-weight: 500;
+        color: #777;
+        cursor: pointer;
+        &.--active {
+          color: red;
+          border-bottom: 2px solid red;
+        }
+      }
+    }
+  }
 }
-.p-home__nav__list {
-  display: flex;
-  overflow: scroll;
-}
-ul {
-  padding: 0;
-}
-li {
-  width: 100px;
-  flex-shrink: 0;
-  padding: 10px 0;
-  list-style-type: none;
-  text-align: center;
-  font-size: 14px;
-  font-weight: 500;
-  color: #777;
-}
-li.--active {
-  color: red;
-}
+li
 .p-home__tab-wrapper {
   display: flex;
 }

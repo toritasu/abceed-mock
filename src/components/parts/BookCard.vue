@@ -18,12 +18,15 @@ const { book } = defineProps<{
   </div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 .c-bookcard {
   width: 90px;
   flex-shrink: 0;
   margin-right: 20px;
   filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.25));
+  &:last-child {
+    margin-right: 0;
+  }
+  img { width: 100%;}
 }
-img { width: 100%;}
 </style>
