@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useRoute } from 'vue-router'
+import { fetchBookApi } from "@/assets/scripts/api.ts"
 
 const route = useRoute()
 const id: string = route.query.id
@@ -12,12 +13,18 @@ type BookDetails = {
   imgUrl: string
 }
 
-const findBook = async (id: string): Promise<BookDetails> => {
-  const endpoint = "https://dev-app-api.abceed.com/mock/book/all"
-  const res = await fetch(endpoint)
-  const { top_category_list: result } = await res.json()
-  console.log(result)
-  const book = result[0].sub_category_list[0].book_list[0]
+const getUniqueBookList = (data) => {
+  const array = new Array()
+  data.forEach(topCategory => {
+    topCategory.subCategories.forEach(subCategory => {
+      array.push(...subCategory.book_list)
+    })
+  })
+  return Array.from(new Set(array))
+}
+
+const findBookById = (uniqueBookList: Array<Object>, id: string) => {
+  const book = uniqueBookList.find(book => book.id_book === id)
   return {
     id: book.id_book,
     title: book.name_book,
@@ -26,9 +33,10 @@ const findBook = async (id: string): Promise<BookDetails> => {
     imgUrl: book.img_url
   }
 }
-const book: BookDetails = await findBook(id)
 
-console.log(book)
+const topCateogyList: Array<TopCategory> = await fetchBookApi();
+const uniqueBookList: Array<Object> = getUniqueBookList(topCateogyList);
+const book: BookDetails = await findBookById(uniqueBookList, id)
 
 // const testTypes: Array<{
 //   name: string, icon: string
