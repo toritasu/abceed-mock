@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useRoute } from 'vue-router'
 import { fetchBookApi } from "@/assets/scripts/api.ts"
+import type { TopCategory } from "@/assets/scripts/api.ts"
 
 const route = useRoute()
 const id: string = route.query.id
@@ -13,7 +14,8 @@ type BookDetails = {
   imgUrl: string
 }
 
-const getUniqueBookList = (data) => {
+// TopCategoryListから一意の書籍リストを作成
+const getUniqueBookList = (data: Array<TopCategory>) => {
   const array = new Array()
   data.forEach(topCategory => {
     topCategory.subCategories.forEach(subCategory => {
@@ -23,6 +25,7 @@ const getUniqueBookList = (data) => {
   return Array.from(new Set(array))
 }
 
+// 一意の書籍リストから目的の書籍を抽出
 const findBookById = (uniqueBookList: Array<Object>, id: string) => {
   const book = uniqueBookList.find(book => book.id_book === id)
   return {

@@ -1,10 +1,14 @@
 // 書籍系API返り値
-type TopCategoryResponse = {
+export type TopCategoryResponse = {
   id_top_category: string,
   name_category: string,
-  sub_category_list: Object[]
+  sub_category_list: {
+    id_category: string,
+    name_category: string,
+    book_list: Array<Object>
+  }
 }
-type TopCategory = {
+export type TopCategory = {
   id: string,
   name: string,
   subCategories: Object[]
