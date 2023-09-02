@@ -52,6 +52,9 @@ const changeCategory = (category: string) => {
     &__list {
       display: flex;
       overflow: auto;
+      &::-webkit-scrollbar {
+        display: none;
+      }
       &__item {
         width: 100px;
         flex-shrink: 0;
@@ -69,7 +72,6 @@ const changeCategory = (category: string) => {
     }
   }
 }
-li
 .p-home__tab-wrapper {
   display: flex;
 }
