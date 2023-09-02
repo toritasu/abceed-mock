@@ -4,11 +4,16 @@ import type { Ref } from "vue"
 
 import TemplatesTopCategoryTab from '@/components/templates/TopCategoryTab.vue'
 
-type Books = Array<Book>
+// 書籍系API返り値
+type TopCategory = {
+  id_top_category: string,
+  name_category: string,
+  sub_category_list: Object[]
+}
 
 // TOPカテゴリー一覧を取得
 // App.vueで実行
-const fetchBookApi = async (): Promise<Books> => {
+const fetchBookApi = async (): Promise<TopCategory[]> => {
   const endpoint = "https://dev-app-api.abceed.com/mock/book/all"
   const res = await fetch(endpoint)
   const { top_category_list: result } = await res.json()
@@ -16,12 +21,13 @@ const fetchBookApi = async (): Promise<Books> => {
 }
 // TOPカテゴリー別オブジェクト
 // ナビのプロパティとTopCategoryTabコンポーネントのpropsとなる
-const responseFromApi = await fetchBookApi()
-const topCateogyList = responseFromApi.map(category => ({
-  id: category['id_top_category'],
-  name: category['name_category'],
-  subCategories: category['sub_category_list']
-}))
+const responseFromApi = await fetchBookApi();
+const topCateogyList = responseFromApi
+  .map((category: TopCategory) => ({
+    id: category['id_top_category'],
+    name: category['name_category'],
+    subCategories: category['sub_category_list']
+  }));
 
 console.log(topCateogyList)
 
