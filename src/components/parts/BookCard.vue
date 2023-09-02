@@ -1,10 +1,10 @@
 <script setup lang="ts">
-type Book = {
+type BookCard = {
   id: string,
   imgUrl: string
 }
 const { book } = defineProps<{
-  book: Book
+  book: BookCard
 }>();
 
 
