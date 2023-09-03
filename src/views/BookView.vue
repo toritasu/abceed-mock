@@ -99,6 +99,7 @@ const testTypes: Array<{
 .c-bookdetails {
   background-color: #fff;
   display: flex;
+  align-items: flex-start;
   width: 100%;
   max-width: 450px;
   margin: 0 auto;
