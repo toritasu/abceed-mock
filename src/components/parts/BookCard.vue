@@ -21,9 +21,10 @@ const { book } = defineProps<{
 <style lang="scss" scoped>
 .c-bookcard {
   width: 90px;
+  aspect-ratio: 1 / 1.41;
   flex-shrink: 0;
-  margin-right: 20px;
   filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.25));
+  margin-right: 20px;
   &:last-child {
     margin-right: 0;
   }

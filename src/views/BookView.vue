@@ -106,6 +106,7 @@ const testTypes: Array<{
   &__cover {
     width: 90px;
     flex-shrink: 0;
+    filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.25));
   }
   &__info {
     padding-left: 15px;
@@ -142,7 +143,7 @@ const testTypes: Array<{
   &__btn {
     display: inline-block;
     width: calc((100% - 10px) / 2);
-    height: 20px;
+    padding: 6px 0;
     text-align: center;
     font-size: 10px;
     font-weight: 700;
