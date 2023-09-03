@@ -121,10 +121,12 @@ const testTypes: Array<{
     align-items: flex-start;
     margin-bottom: 10px;
     dt {
+      width: 36px;
+      flex-shrink: 0;
+      padding: 2px 0;
+      text-align: center;
       font-size: 10px;
       font-weight: 400;
-      height: 1.6em;
-      padding: 2px 6px;
       color: #777;
       background-color: #eee;
       border-radius: 2px;
