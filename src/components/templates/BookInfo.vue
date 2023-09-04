@@ -1,0 +1,96 @@
+<script setup lang="ts">
+import type { BookDetails } from "@/views/BookView.vue"
+const { book } = defineProps<{
+  book: BookDetails
+}>();
+</script>
+
+<template>
+  <div class="c-bookdetails">
+    <img class="c-bookdetails__cover" :src="book.imgUrl" :alt="book.title" />
+    <div class="c-bookdetails__info">
+      <h2 class="c-bookdetails__title">{{ book.title }}</h2>
+      <dl class="c-bookdetails__item">
+        <dt>著者</dt>
+        <dd>{{ book.author }}</dd>
+      </dl>
+      <dl class="c-bookdetails__item">
+        <dt>出版社</dt>
+        <dd>{{ book.publisher }}</dd>
+      </dl>
+      <div class="c-bookdetails__btn-wrapper">
+        <button class="c-bookdetails__btn">MyBooks追加</button>
+        <button class="c-bookdetails__btn --active">
+          {{ book.isUnlimited ? '読み放題中' : '購入する' }}
+        </button>
+      </div>
+    </div>
+  </div>
+</template>
+
+<style lang="scss" scoped>
+.c-bookdetails {
+  background-color: var(--bg-main);
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 450px;
+  margin: 0 auto;
+  padding: 15px;
+  &__cover {
+    width: 90px;
+    flex-shrink: 0;
+    filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.25));
+  }
+  &__info {
+    padding-left: 15px;
+  }
+  &__title {
+    color: var(--text-main);
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  &__item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 10px;
+    dt {
+      width: 36px;
+      flex-shrink: 0;
+      padding: 2px 0;
+      text-align: center;
+      font-size: 10px;
+      font-weight: 400;
+      color: var(--text-light);
+      background-color: var(--bg-light);
+      border-radius: 2px;
+      margin-right: 6px;
+    }
+    dd {
+      font-size: 12px;
+      font-weight: 600;
+      padding: 1px 0;
+      color: var(--text-light);
+    }
+  }
+  &__btn {
+    display: inline-block;
+    width: calc((100% - 10px) / 2);
+    padding: 6px 0;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-red);
+    border: 1px solid var(--text-red);
+    border-radius: 5px;
+    &:first-of-type {
+      margin-right: 10px;
+    }
+    &.--active {
+      color: var(--text-reversal);
+      background-color: var(--text-red);
+    }
+  }
+}
+</style>
