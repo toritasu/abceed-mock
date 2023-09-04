@@ -17,7 +17,8 @@ export type BookResponse = {
   name_book: string,
   publisher: string,
   author: string,
-  img_url: string
+  img_url: string,
+  is_unlimited: number | boolean
 }
 
 // 書籍系APIのフェッチの返り値
