@@ -3,15 +3,18 @@ import { useRoute } from 'vue-router'
 import { fetchBookApi } from "@/assets/scripts/api.ts"
 import type { TopCategory } from "@/assets/scripts/api.ts"
 
+// クエリから書籍IDを取得する
 const route = useRoute()
 const id: string = route.query.id
 
+// 画面表示に必要な書籍詳細プロパティ
 type BookDetails = {
   id: string,
   title: string,
   author: string,
   publisher: string,
-  imgUrl: string
+  imgUrl: string,
+  isUnlimited: string
 }
 
 // TopCategoryListから一意の書籍リストを作成
@@ -24,7 +27,6 @@ const getUniqueBookList = (data: Array<TopCategory>) => {
   })
   return Array.from(new Set(array))
 }
-
 // 一意の書籍リストから目的の書籍を抽出
 const findBookById = (uniqueBookList: Array<Object>, id: string) => {
   const book = uniqueBookList.find(book => book.id_book === id)
@@ -33,16 +35,22 @@ const findBookById = (uniqueBookList: Array<Object>, id: string) => {
     title: book.name_book,
     author: book.author,
     publisher: book.publisher,
-    imgUrl: book.img_url
+    imgUrl: book.img_url,
+    isUnlimited: book.is_unlimited
   }
 }
-
+// 1.書籍リスト取得APIをフェッチ
 const topCateogyList: Array<TopCategory> = await fetchBookApi();
+// 2.一意の書籍リストを作成
 const uniqueBookList: Array<Object> = getUniqueBookList(topCateogyList);
+// 3.目的の書籍を抽出しフォーマット
 const book: BookDetails = await findBookById(uniqueBookList, id)
+console.log(book)
 
-// テストタイプ
-// 本来は書籍詳細オブジェクトに識別データ（配列またはboolean）が含まれていると思われる
+// テストタイプ(モック用)
+// 本来は、書籍詳細オブジェクトに識別データが含まれていると思われる
+// 想定1: [ 'app', 'test' ]
+// 想定2: test_types { app: true, test: true, audio: false, sw: false, ... }
 const testTypes: Array<{
   label: string, icon: string
 }> = [
@@ -53,13 +61,17 @@ const testTypes: Array<{
   { label: '単語一覧', icon: 'icon_study_vocab.svg' },
   { label: 'マークシート', icon: 'icon_study_marksheet.svg' },
   { label: '学習記録', icon: 'icon_study_record.svg' }
-
 ]
 
 </script>
 
 <template>
   <div class="p-book">
+    <!-- ヘッダー部 -->
+    <div class="p-book__header">
+      書籍詳細
+    </div>
+    <!-- 書籍情報 -->
     <div class="c-bookdetails">
       <img class="c-bookdetails__cover" :src="book.imgUrl" :alt="book.title" />
       <div class="c-bookdetails__info">
@@ -74,10 +86,13 @@ const testTypes: Array<{
         </dl>
         <div class="c-bookdetails__btn-wrapper">
           <button class="c-bookdetails__btn">MyBooks追加</button>
-          <button class="c-bookdetails__btn --active">読み放題中</button>
+          <button class="c-bookdetails__btn --active">
+            {{ book.isUnlimited ? '読み放題中' : '購入する' }}
+          </button>
         </div>
       </div>
     </div>
+    <!-- テストタイプ -->
     <ul class="c-test-types">
       <li class="c-test-types__item" v-for="testType in testTypes" :key="testType">
         <div class="c-test-types__item__inner">
