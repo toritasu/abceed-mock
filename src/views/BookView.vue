@@ -5,7 +5,6 @@ import type { TopCategory, SubCategoryResponse, BookResponseResponse } from "@/a
 import TemplatesBookInfo from "@/components/templates/BookInfo.vue"
 import TemplatesBookTestTypes from "@/components/templates/BookTestTypes.vue"
 
-
 // クエリから書籍IDを取得する
 const route = useRoute();
 const id: string = route.query.id;
@@ -51,7 +50,7 @@ const topCateogyList: Array<TopCategory> = await fetchBookApi();
 const uniqueBookList: Array<Object> = getUniqueBookList(topCateogyList);
 // 3.目的の書籍を抽出しフォーマット
 const book: BookDetails = await findBookById(uniqueBookList, id)
-console.log(book)
+console.log('書籍詳細', book)
 
 </script>
 
