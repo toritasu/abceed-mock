@@ -73,6 +73,7 @@ const changeCategory = (category: string) => {
     }
   }
   &__tab-wrapper {
+    background-color: var(--bg-light);
     display: flex;
   }
 }

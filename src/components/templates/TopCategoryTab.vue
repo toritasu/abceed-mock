@@ -15,7 +15,6 @@ const { contents } = defineProps(['contents']);
 
 <style lang="scss" scoped>
 .c-topcategory {
-  background-color: var(--bg-light);
   width: 100%;
   padding: 20px 0;
   max-width: calc((90px + 20px) * 10 + (15px * 2) - 20px); // 書籍10件が入りきる幅
