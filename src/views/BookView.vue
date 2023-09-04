@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { useRoute } from 'vue-router'
 import { fetchBookApi } from "@/assets/scripts/api.ts"
-import type { TopCategory } from "@/assets/scripts/api.ts"
+import type { TopCategory, SubCategoryResponse, BookResponseResponse } from "@/assets/scripts/api.ts"
 
 // クエリから書籍IDを取得する
-const route = useRoute()
-const id: string = route.query.id
+const route = useRoute();
+const id: string = route.query.id;
 
 // 画面表示に必要な書籍詳細プロパティ
 type BookDetails = {
@@ -14,29 +14,32 @@ type BookDetails = {
   author: string,
   publisher: string,
   imgUrl: string,
-  isUnlimited: string
+  isUnlimited: boolean
 }
 
 // TopCategoryListから一意の書籍リストを作成
 const getUniqueBookList = (data: Array<TopCategory>) => {
   const array = new Array()
   data.forEach(topCategory => {
-    topCategory.subCategories.forEach(subCategory => {
-      array.push(...subCategory.book_list)
-    })
+    topCategory.subCategories
+      .forEach((subCategory: SubCategoryResponse) => {
+        array.push(...subCategory.book_list)
+      });
   })
   return Array.from(new Set(array))
 }
 // 一意の書籍リストから目的の書籍を抽出
 const findBookById = (uniqueBookList: Array<Object>, id: string) => {
-  const book = uniqueBookList.find(book => book.id_book === id)
+  const book: BookResponseResponse = uniqueBookList
+    .find((book: BookResponseResponse) => book.id_book === id);
+  if(!book) throw new Error('お探しの書籍はありません')
   return {
     id: book.id_book,
     title: book.name_book,
     author: book.author,
     publisher: book.publisher,
     imgUrl: book.img_url,
-    isUnlimited: book.is_unlimited
+    isUnlimited: book.is_unlimited === 1 ? true : false
   }
 }
 // 1.書籍リスト取得APIをフェッチ
@@ -69,7 +72,10 @@ const testTypes: Array<{
   <div class="p-book">
     <!-- ヘッダー部 -->
     <div class="p-book__header">
-      書籍詳細
+      <router-link to="/" class="p-book__header__prev">
+        <img class="p-book__header__" src="@/assets/images/chevron-left.svg">
+        <span>書籍詳細</span>
+      </router-link>
     </div>
     <!-- 書籍情報 -->
     <div class="c-bookdetails">
@@ -110,6 +116,22 @@ const testTypes: Array<{
 <style lang="scss">
 .p-book {
   background-color: #f5f5f5;
+  &__header {
+    width: 100%;
+    height: 50px;
+    padding: 0 15px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    &__prev {
+      display: flex;
+      align-items: center;
+      img {
+        margin-right: 10px;
+      }
+    }
+  }
 }
 .c-bookdetails {
   background-color: #fff;
@@ -161,8 +183,8 @@ const testTypes: Array<{
     width: calc((100% - 10px) / 2);
     padding: 6px 0;
     text-align: center;
-    font-size: 10px;
-    font-weight: 700;
+    font-size: 12px;
+    font-weight: 500;
     color: red;
     border: 1px solid red;
     border-radius: 5px;
@@ -210,6 +232,7 @@ const testTypes: Array<{
     }
     &__label {
       font-size: 10px;
+      font-weight: 500;
     }
   }
 }

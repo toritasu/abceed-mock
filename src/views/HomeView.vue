@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import { ref } from "vue"
 import type { Ref } from "vue"
-import { fetchBookApi } from "@/assets/scripts/api.ts"
+import { fetchBookApi } from "@/assets/scripts/api"
+import { TopCategory } from "@/assets/scripts/api"
 import TemplatesTopCategoryTab from '@/components/templates/TopCategoryTab.vue'
 
 // TOPカテゴリー一覧を取得
 // App.vueで実行
 // ナビのプロパティとTopCategoryTabコンポーネントのpropsとなる
 const topCateogyList: Array<TopCategory> = await fetchBookApi();
-
 console.log(topCateogyList)
 
 // 選択中のTopカテゴリー
@@ -71,8 +71,8 @@ const changeCategory = (category: string) => {
       }
     }
   }
-}
-.p-home__tab-wrapper {
-  display: flex;
+  &__tab-wrapper {
+    display: flex;
+  }
 }
 </style>
