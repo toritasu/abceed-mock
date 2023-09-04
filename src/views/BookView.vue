@@ -31,9 +31,9 @@ const getUniqueBookList = (data: Array<TopCategory>) => {
   return Array.from(new Set(array))
 }
 // 一意の書籍リストから目的の書籍を抽出
-const findBookById = (uniqueBookList: Array<Object>, id: string) => {
-  const book: BookResponseResponse = uniqueBookList
-    .find((book: BookResponseResponse) => book.id_book === id);
+const findBookById = (uniqueBookList: Array<BookResponse>, id: string) => {
+  const book: BookResponse = uniqueBookList
+    .find((book: BookResponse) => book.id_book === id);
   if(!book) throw new Error('お探しの書籍はありません')
   return {
     id: book.id_book,
@@ -57,12 +57,7 @@ console.log('書籍詳細', book)
 <template>
   <div class="p-book">
     <!-- ヘッダー部 -->
-    <div class="p-book__header">
-      <router-link to="/" class="p-book__header__prev">
-        <img class="p-book__header__" src="@/assets/images/chevron-left.svg">
-        <span>書籍詳細</span>
-      </router-link>
-    </div>
+    <NavigationHeader>書籍詳細</NavigationHeader>
     <!-- 書籍情報 -->
     <TemplatesBookInfo :book="book" />
     <!-- テストタイプ -->
@@ -73,21 +68,5 @@ console.log('書籍詳細', book)
 <style lang="scss">
 .p-book {
   background-color: var(--bg-light);
-  &__header {
-    width: 100%;
-    height: 50px;
-    padding: 0 15px;
-    background-color: var(--bg-main);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    &__prev {
-      display: flex;
-      align-items: center;
-      img {
-        margin-right: 10px;
-      }
-    }
-  }
 }
 </style>
