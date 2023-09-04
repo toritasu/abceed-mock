@@ -21,6 +21,7 @@ const changeCategory = (category: string) => {
 
 <template>
     <div class="p-home">
+      <!-- タブナビゲーション -->
       <nav class="p-home__nav">
         <ul class="p-home__nav__list">
           <li class="p-home__nav__list__item"
@@ -47,7 +48,7 @@ const changeCategory = (category: string) => {
   width: 100%;
   overflow: hidden;
   &__nav {
-    max-width: 960px;
+    max-width: var(--max-width);
     margin: 0 auto;
     &__list {
       display: flex;
@@ -62,11 +63,11 @@ const changeCategory = (category: string) => {
         text-align: center;
         font-size: 14px;
         font-weight: 500;
-        color: #777;
+        color: var(--text-light);
         cursor: pointer;
         &.--active {
-          color: red;
-          border-bottom: 2px solid red;
+          color: var(--text-red);
+          border-bottom: 2px solid var(--text-red);
         }
       }
     }

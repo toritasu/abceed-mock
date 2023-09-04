@@ -115,12 +115,12 @@ const testTypes: Array<{
 
 <style lang="scss">
 .p-book {
-  background-color: #f5f5f5;
+  background-color: var(--bg-light);
   &__header {
     width: 100%;
     height: 50px;
     padding: 0 15px;
-    background-color: #fff;
+    background-color: var(--bg-main);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -134,7 +134,7 @@ const testTypes: Array<{
   }
 }
 .c-bookdetails {
-  background-color: #fff;
+  background-color: var(--bg-main);
   display: flex;
   align-items: flex-start;
   width: 100%;
@@ -150,9 +150,9 @@ const testTypes: Array<{
     padding-left: 15px;
   }
   &__title {
+    color: var(--text-main);
     font-size: 16px;
     font-weight: 700;
-    line-height: 1.5;
     margin-bottom: 10px;
   }
   &__item {
@@ -166,8 +166,8 @@ const testTypes: Array<{
       text-align: center;
       font-size: 10px;
       font-weight: 400;
-      color: #777;
-      background-color: #eee;
+      color: var(--text-light);
+      background-color: var(--bg-light);
       border-radius: 2px;
       margin-right: 6px;
     }
@@ -175,7 +175,7 @@ const testTypes: Array<{
       font-size: 12px;
       font-weight: 600;
       padding: 1px 0;
-      color: #777;
+      color: var(--text-light);
     }
   }
   &__btn {
@@ -184,16 +184,16 @@ const testTypes: Array<{
     padding: 6px 0;
     text-align: center;
     font-size: 12px;
-    font-weight: 500;
-    color: red;
-    border: 1px solid red;
+    font-weight: 700;
+    color: var(--text-red);
+    border: 1px solid var(--text-red);
     border-radius: 5px;
     &:first-of-type {
       margin-right: 10px;
     }
     &.--active {
-      color: #fff;
-      background-color: red;
+      color: var(--text-reversal);
+      background-color: var(--text-red);
     }
   }
 }
@@ -207,8 +207,8 @@ const testTypes: Array<{
     width: 70px;
     aspect-ratio: 1 / 1;
     flex-shrink: 0;
-    background-color: #fff;
-    border: 1px solid #ccc;
+    background-color: var(--bg-main);
+    border: 1px solid #ddd;
     border-radius: 5px;
     margin-right: 20px;
     margin-bottom: 20px;
@@ -231,6 +231,7 @@ const testTypes: Array<{
       margin-bottom: 5px;
     }
     &__label {
+      color: var(--text-main);
       font-size: 10px;
       font-weight: 500;
     }
