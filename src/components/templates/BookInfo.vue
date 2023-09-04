@@ -10,6 +10,18 @@ const { book } = defineProps<{
 // MyBooksの状態管理
 const mybookStore = useMybookStore();
 const { isMybook } = storeToRefs(mybookStore);
+
+const addToMybooks = (book: BookDetails) => {
+  const bookcard: BookCard = {
+    id: book.id,
+    imgUrl: book.imgUrl
+  }
+  mybookStore.add(bookcard)
+}
+const removeFromMyBooks = (bookId: string) => {
+  mybookStore.remove(bookId)
+}
+
 </script>
 
 <template>
@@ -35,7 +47,7 @@ const { isMybook } = storeToRefs(mybookStore);
         <button
           v-if="isMybook(book.id)"
           class="c-bookdetails__btn --active"
-          @click="mybookStore.remove(book.id)">MyBooks削除</button>
+          @click="removeFromMyBooks(book.id)">MyBooks削除</button>
         <!-- Unlimited対象 -->
         <button class="c-bookdetails__btn --active">
           {{ book.isUnlimited ? '読み放題中' : '購入する' }}

@@ -14,12 +14,14 @@ export const useMybookStore = defineStore('mybook', {
     }
   },
   actions: {
-    add(bookId: string) {
-      this.mybooks.push(bookId);
+    add(bookcard: BookCard) {
+      this.mybooks.push(bookcard);
     },
     remove(bookId: string) {
-      const index = this.mybooks.indexOf(bookId);
-      this.mybooks.splice(index, 1);
+      const index = this.mybooks
+        .some((mybook: BookCard, i: number) => {
+          if(mybook.id === bookId) this.mybooks.splice(i, 1)
+        });
     }
   }
 })
