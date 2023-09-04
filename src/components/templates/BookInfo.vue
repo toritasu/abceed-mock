@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { storeToRefs } from "pinia"
 import { useMybookStore } from '@/stores/mybook.ts';
-import type { BookDetails } from "@/views/BookView.vue";
+import type { BookDetails, BookCard } from "@/assets/scripts/types";
 
 const { book } = defineProps<{
   book: BookDetails
@@ -30,7 +30,7 @@ const { isMybook } = storeToRefs(mybookStore);
         <button
           v-if="!isMybook(book.id)"
           class="c-bookdetails__btn"
-          @click="mybookStore.add(book.id)">MyBooks追加</button>
+          @click="addToMybooks(book)">MyBooks追加</button>
         <!-- MyBook:追加済み -->
         <button
           v-if="isMybook(book.id)"

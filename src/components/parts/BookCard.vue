@@ -1,12 +1,8 @@
 <script setup lang="ts">
-type BookCard = {
-  id: string,
-  imgUrl: string
-}
+import type { BookCard } from "@/assets/scripts/types"
 const { book } = defineProps<{
   book: BookCard
 }>();
-
 
 </script>
 
@@ -24,10 +20,6 @@ const { book } = defineProps<{
   aspect-ratio: 1 / 1.41;
   flex-shrink: 0;
   filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.25));
-  margin-right: 20px;
-  &:last-child {
-    margin-right: 0;
-  }
   img { width: 100%;}
 }
 </style>

@@ -1,10 +1,11 @@
-<script setup>
-import PartsBookCard from '@/components/parts/BookCard.vue'
+<script setup lang="ts">
+import PartsBookCard from "@/components/parts/BookCard.vue"
+import type { BookCard, BookDetails } from "@/assets/scripts/api.ts"
 
 const { contents } = defineProps(['contents']);
 const name = contents['name_category']
-const books = contents['book_list']
-  .map(book => ({
+const books: BookCard = contents['book_list']
+  .map((book: BookDetails) => ({
     id: book['id_book'],
     imgUrl: book['img_url']
   }));
@@ -40,6 +41,12 @@ const books = contents['book_list']
     padding: 0 15px;
     display: flex;
     overflow: auto;
+    & > .c-bookcard {
+      margin-right: 15px;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
   }
 }
 </style>

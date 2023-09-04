@@ -1,23 +1,15 @@
 <script setup lang="ts">
-import { useRoute } from 'vue-router'
-import { fetchBookApi } from "@/assets/scripts/api.ts"
-import type { TopCategory, SubCategoryResponse, BookResponseResponse } from "@/assets/scripts/api.ts"
-import TemplatesBookInfo from "@/components/templates/BookInfo.vue"
-import TemplatesBookTestTypes from "@/components/templates/BookTestTypes.vue"
+import { useRoute } from 'vue-router';
+import { fetchBookApi } from "@/assets/scripts/api";
+import type { TopCategory, SubCategoryResponse, BookResponse } from "@/assets/scripts/api";
+import type { BookDetails } from "@/assets/scripts/types";
+import NavigationHeader from '@/components/common/NavigationHeader.vue';
+import TemplatesBookInfo from "@/components/templates/BookInfo.vue";
+import TemplatesBookTestTypes from "@/components/templates/BookTestTypes.vue";
 
 // クエリから書籍IDを取得する
 const route = useRoute();
 const id: string = route.query.id;
-
-// 画面表示に必要な書籍詳細プロパティ
-export type BookDetails = {
-  id: string,
-  title: string,
-  author: string,
-  publisher: string,
-  imgUrl: string,
-  isUnlimited: boolean
-}
 
 // TopCategoryListから一意の書籍リストを作成
 const getUniqueBookList = (data: Array<TopCategory>) => {
