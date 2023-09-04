@@ -1,0 +1,22 @@
+:root {
+  --max-width: 960px;
+  /* ライトモードの色変数 */
+  --text-main: #100D00;
+  --text-light: #787878;
+  --text-reversal: #fff;
+  --text-red: #FF233C;
+  --bg-main: #fff;
+  --bg-light: #f5f5f5;
+}
+
+/* ダークモードの色変数 */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text-main: #fff;
+    --text-light: #D1D1D1;
+    --text-reversal: #212121;
+    --text-red: #FC6767;
+    --bg-main: #212121;
+    --bg-light: #3B3B3B;
+  }
+}
