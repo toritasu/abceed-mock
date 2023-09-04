@@ -9,6 +9,3 @@ import TheHeader from '@/components/common/TheHeader.vue';
     <RouterView />
   </Suspense>
 </template>
-
-<style lang="scss" scoped>
-</style>
