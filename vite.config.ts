@@ -1,7 +1,7 @@
 import { fileURLToPath, URL } from 'node:url'
 
 import { defineConfig } from 'vite'
-import Unfonts from 'vite-plugin-fonts'
+import Unfonts from 'unplugin-fonts/vite'
 import vue from '@vitejs/plugin-vue'
 
 // https://vitejs.dev/config/
