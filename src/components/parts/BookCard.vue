@@ -18,7 +18,6 @@ const { book } = defineProps<{
 .c-bookcard {
   width: 100%;
   max-width: 90px;
-  aspect-ratio: 1 / 1.41;
   flex-shrink: 0;
   filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.25));
   img { width: 100%;}

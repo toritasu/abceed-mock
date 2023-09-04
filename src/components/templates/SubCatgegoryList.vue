@@ -38,9 +38,10 @@ const books: BookCard = contents['book_list']
   }
   &__booklist {
     width: 100%;
-    padding: 0 15px;
+    padding: 0 15px 5px;
     display: flex;
-    overflow: auto;
+    overflow-y: hidden;
+    overflow-x: auto;
     & > .c-bookcard {
       margin-right: 15px;
       &:last-child {
