@@ -32,20 +32,25 @@ const testTypes: Array<{
 
 <style lang="scss">
 .c-test-types {
+  $size: 70px;
+  $margin: 15px;
   padding: 15px;
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
   flex-wrap: wrap;
+  @media screen and (min-width: 820px) {
+    max-width: calc($size * 4 + $margin * 3 + 15px * 2);
+  }
   &__item {
-    width: 70px;
+    width: $size;
     aspect-ratio: 1 / 1;
     flex-shrink: 0;
     background-color: var(--bg-main);
     border: 1px solid #ddd;
     border-radius: 5px;
-    margin-right: 20px;
-    margin-bottom: 20px;
+    margin-right: $margin;
+    margin-bottom: $margin;
     /* ボタンの中身を中央合わせ */
     display: flex;
     align-items: center;
@@ -54,10 +59,14 @@ const testTypes: Array<{
       text-align: center;
     }
     &:nth-of-type(4n) {
-      margin-right: 0;
+      @media screen and (min-width: 800px) {
+        margin-right: 0;
+      }
     }
     &:nth-last-of-type(-n + 4) {
-      margin-bottom: 0;
+      @media screen and (min-width: 800px) {
+        margin-bottom: 0;
+      }
     }
     &__icon {
       width: 40px;

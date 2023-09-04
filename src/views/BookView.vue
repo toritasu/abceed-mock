@@ -50,15 +50,26 @@ console.log('書籍詳細', book)
   <div class="p-book">
     <!-- ヘッダー部 -->
     <NavigationHeader>書籍詳細</NavigationHeader>
-    <!-- 書籍情報 -->
-    <TemplatesBookInfo :book="book" />
-    <!-- テストタイプ -->
-    <TemplatesBookTestTypes />
+    <div class="p-book__contents">
+      <!-- 書籍情報 -->
+      <TemplatesBookInfo :book="book" />
+      <!-- テストタイプ -->
+      <TemplatesBookTestTypes />
+    </div>
   </div>
 </template>
 
 <style lang="scss">
 .p-book {
-  background-color: var(--bg-light);
+  &__contents {
+    background-color: var(--bg-light);
+    display: block;
+    @media screen and (min-width: 768px) {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 20px 0;
+    }
+  }
 }
 </style>

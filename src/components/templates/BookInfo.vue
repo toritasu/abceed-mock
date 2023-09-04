@@ -25,31 +25,31 @@ const removeFromMyBooks = (bookId: string) => {
 </script>
 
 <template>
-  <div class="c-bookdetails">
-    <img class="c-bookdetails__cover" :src="book.imgUrl" :alt="book.title" />
-    <div class="c-bookdetails__info">
-      <h2 class="c-bookdetails__title">{{ book.title }}</h2>
-      <dl class="c-bookdetails__item">
+  <div class="c-bookinfo">
+    <img class="c-bookinfo__cover" :src="book.imgUrl" :alt="book.title" />
+    <div class="c-bookinfo__info">
+      <h2 class="c-bookinfo__title">{{ book.title }}</h2>
+      <dl class="c-bookinfo__item">
         <dt>著者</dt>
         <dd>{{ book.author }}</dd>
       </dl>
-      <dl class="c-bookdetails__item">
+      <dl class="c-bookinfo__item">
         <dt>出版社</dt>
         <dd>{{ book.publisher }}</dd>
       </dl>
-      <div class="c-bookdetails__btn-wrapper">
+      <div class="c-bookinfo__btn-wrapper">
         <!-- MyBook:未追加 -->
         <button
           v-if="!isMybook(book.id)"
-          class="c-bookdetails__btn"
+          class="c-bookinfo__btn"
           @click="addToMybooks(book)">MyBooks追加</button>
         <!-- MyBook:追加済み -->
         <button
           v-if="isMybook(book.id)"
-          class="c-bookdetails__btn --active"
+          class="c-bookinfo__btn --active"
           @click="removeFromMyBooks(book.id)">MyBooks削除</button>
         <!-- Unlimited対象 -->
-        <button class="c-bookdetails__btn --active">
+        <button class="c-bookinfo__btn --active">
           {{ book.isUnlimited ? '読み放題中' : '購入する' }}
         </button>
       </div>
@@ -58,14 +58,15 @@ const removeFromMyBooks = (bookId: string) => {
 </template>
 
 <style lang="scss" scoped>
-.c-bookdetails {
+.c-bookinfo {
   background-color: var(--bg-main);
   display: flex;
   align-items: flex-start;
   width: 100%;
-  max-width: 450px;
-  margin: 0 auto;
   padding: 15px;
+  @media screen and (min-width: 768px) {
+    max-width: 450px;
+  }
   &__cover {
     width: 90px;
     flex-shrink: 0;

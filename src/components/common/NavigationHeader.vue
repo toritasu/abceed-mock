@@ -18,6 +18,8 @@
   height: 50px;
   background-color: var(--bg-main);
   &__inner {
+    width: 100%;
+    height: 100%;
     max-width: var(--max-width);
     margin: 0 auto;
     padding: 0 15px;
