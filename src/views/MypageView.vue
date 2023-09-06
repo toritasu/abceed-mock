@@ -11,9 +11,9 @@ console.log(mybooks)
   <div class="p-mypage">
     <NavigationHeader>MyBook</NavigationHeader>
     <div class="p-mypage__contents">
-      <div v-if="mybooks.length > 0" class="p-mypage__mybooks">
+      <ul v-if="mybooks.length > 0" class="p-mypage__mybooks">
         <PartsBookBlock v-for="(book,index) in mybooks" :key="index" :book="book"/>
-      </div>
+      </ul>
       <div v-else class="p-mypage__message">
         お気に入りの書籍をMyBookに登録しよう！
       </div>
@@ -31,21 +31,15 @@ console.log(mybooks)
   &__contents {
     background: var(--bg-light);
   }
-  &__mybooks {
-    max-width: var(--max-width);
+  ul {
+    width: 100%;
+    max-width: 600px;
+    padding: 20px 15px 60px;
     margin: 0 auto;
-    padding: 15px;
-    display: flex;
-    flex-wrap: wrap;
-    margin-bottom: -15px;
-    & > .c-bookcard {
-      width: calc((100% - (15px * 3)) / 4);
-      margin-right: 15px;
-      margin-bottom: 15px;
-      &:nth-of-type(4n) {
-        @media screen and (max-width: 767px) {
-          margin-right: 0;
-        }
+    li {
+      border-radius: 10px;
+      &:last-child {
+        margin-bottom: 0;
       }
     }
   }
