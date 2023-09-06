@@ -20,7 +20,7 @@ export const useMybookStore = defineStore('mybook', {
     remove(bookId: string) {
       const index = this.mybooks
         .some((mybook: BookResponse, i: number) => {
-          if(mybook.id === bookId) this.mybooks.splice(i, 1)
+          if(mybook['id_book'] === bookId) this.mybooks.splice(i, 1)
         });
     }
   }

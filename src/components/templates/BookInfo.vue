@@ -15,7 +15,6 @@ const addToMybooks = (book: BookResponse) => {
   mybookStore.add(book)
 }
 const removeFromMyBooks = (bookId: string) => {
-
   mybookStore.remove(bookId)
 }
 
