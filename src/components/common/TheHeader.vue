@@ -22,7 +22,8 @@
 
 <style lang="scss" scoped>
 .c-header {
-  height: 50px;
+  width: 100%;
+  height: var(--header-height);
   background-color: var(--bg-main);
   &__inner {
     max-width: var(--max-width);

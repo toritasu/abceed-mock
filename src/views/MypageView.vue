@@ -37,15 +37,15 @@ const { mybooks } = useMybookStore();
     padding: 15px;
     display: flex;
     flex-wrap: wrap;
+    margin-bottom: -15px;
     & > .c-bookcard {
       width: calc((100% - (15px * 3)) / 4);
       margin-right: 15px;
       margin-bottom: 15px;
       &:nth-of-type(4n) {
-        margin-right: 0;
-      }
-      &:nth-last-of-type(-n + 4) {
-        margin-bottom: 0;
+        @media screen and (max-width: 767px) {
+          margin-right: 0;
+        }
       }
     }
   }
