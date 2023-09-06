@@ -12,12 +12,14 @@ import TheHeader from '@/components/common/TheHeader.vue';
 
 <style>
 .l-header {
+  width: 100vw;
   position: fixed;
   z-index: 100;
   top: 0;
   left: 0;
 }
 .l-main {
+  width: 100vw;
   padding-top: var(--header-height);
   min-height: 100vh;
   background: var(--bg-light);
