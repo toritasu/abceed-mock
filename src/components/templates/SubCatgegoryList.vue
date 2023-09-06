@@ -24,7 +24,7 @@ const books: BookCard = props.books
   <div class="c-subcategory">
     <div class="c-subcategory__header">
       <h3>{{ name }}</h3>
-      <router-link :to="`/search/?topcategory=${topCategoryId}&subcategory=${subCategoryId}`">
+      <router-link :to="`/search/?top=${topCategoryId}&sub=${subCategoryId}`">
         <img class="c-nav-header__" src="@/assets/images/chevron-right.svg">
       </router-link>
     </div>
