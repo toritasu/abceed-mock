@@ -62,7 +62,6 @@ console.log('書籍詳細', book)
 <style lang="scss">
 .p-book {
   &__contents {
-    background-color: var(--bg-light);
     display: block;
     @media screen and (min-width: 768px) {
       display: flex;

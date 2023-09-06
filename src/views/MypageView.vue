@@ -29,7 +29,6 @@ const { mybooks } = useMybookStore();
     background-color: var(--bg-main);
   }
   &__contents {
-    background: var(--bg-light);
   }
   &__mybooks {
     max-width: var(--max-width);

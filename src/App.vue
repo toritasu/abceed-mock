@@ -19,5 +19,7 @@ import TheHeader from '@/components/common/TheHeader.vue';
 }
 .l-main {
   padding-top: var(--header-height);
+  min-height: 100vh;
+  background: var(--bg-light);
 }
 </style>

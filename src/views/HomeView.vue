@@ -48,9 +48,11 @@ const changeCategory = (category: string) => {
   width: 100%;
   overflow: hidden;
   &__nav {
-    max-width: var(--max-width);
-    margin: 0 auto;
+    width: 100%;
+    background: #fff;
     &__list {
+      max-width: var(--max-width);
+      margin: 0 auto;
       display: flex;
       overflow: auto;
       &::-webkit-scrollbar {
@@ -73,7 +75,6 @@ const changeCategory = (category: string) => {
     }
   }
   &__tab-wrapper {
-    background-color: var(--bg-light);
     display: flex;
   }
 }
