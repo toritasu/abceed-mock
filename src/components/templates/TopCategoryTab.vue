@@ -1,15 +1,23 @@
-<script setup>
+<script setup lang="ts">
 import TemplatesSubCategoryList from '@/components/templates/SubCatgegoryList.vue'
 
-const { contents } = defineProps(['contents']);
+const props = defineProps<{
+  id: string,
+  name: string,
+  subCategories: []
+}>();
 </script>
 
 <template>
   <div class="c-topcategory">
     <TemplatesSubCategoryList
-      v-for="(category, index) in contents"
+      v-for="(category, index) in subCategories"
       :key="index"
-      :contents="category" />
+      :id="category['id_category']"
+      :name="category['name_category']"
+      :books="category['book_list']"
+      :parentId="id"
+    />
   </div>
 </template>
 

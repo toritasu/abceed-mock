@@ -2,9 +2,18 @@
 import PartsBookCard from "@/components/parts/BookCard.vue"
 import type { BookCard, BookDetails } from "@/assets/scripts/api.ts"
 
-const { contents } = defineProps(['contents']);
-const name = contents['name_category']
-const books: BookCard = contents['book_list']
+const props = defineProps<{
+  id: string,
+  name: string,
+  books: Array<BookDetails>,
+  parentId: string
+}>();
+
+// console.log(props)
+const subCategoryId = props.id
+const topCategoryId = props.parentId
+const name = props.name
+const books: BookCard = props.books
   .map((book: BookDetails) => ({
     id: book['id_book'],
     imgUrl: book['img_url']
@@ -15,6 +24,9 @@ const books: BookCard = contents['book_list']
   <div class="c-subcategory">
     <div class="c-subcategory__header">
       <h3>{{ name }}</h3>
+      <router-link :to="`/search/?topcategory=${topCategoryId}&subcategory=${subCategoryId}`">
+        <img class="c-nav-header__" src="@/assets/images/chevron-right.svg">
+      </router-link>
     </div>
     <div class="c-subcategory__booklist">
       <PartsBookCard v-for="(book,index) in books" :key="index" :book="book"/>

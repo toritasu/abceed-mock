@@ -38,7 +38,10 @@ const changeCategory = (category: string) => {
           v-for="category in topCateogyList"
           :key="`contents_${category.id}`"
           v-show="currentCategory === category.id"
-          :contents="category.subCategories" />
+          :id="category.id"
+          :name="category.name"
+          :subCategories="category.subCategories"
+        />
       </div>
     </div>
 </template>
