@@ -55,7 +55,7 @@ console.log('書籍詳細', book)
 .p-book {
   &__contents {
     display: block;
-    @media screen and (min-width: 768px) {
+    @media screen and (min-width: 805px) {
       display: flex;
       align-items: flex-start;
       justify-content: center;

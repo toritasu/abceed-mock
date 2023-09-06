@@ -39,7 +39,8 @@ const testTypes: Array<{
   justify-content: flex-start;
   align-items: flex-start;
   flex-wrap: wrap;
-  @media screen and (min-width: 820px) {
+  @media screen and (min-width: 805px) {
+    padding-top: 0;
     max-width: calc($size * 4 + $margin * 3 + 15px * 2);
   }
   &__item {
@@ -49,6 +50,7 @@ const testTypes: Array<{
     background-color: var(--bg-main);
     border: 1px solid #ddd;
     border-radius: 5px;
+    cursor: pointer;
     margin-right: $margin;
     margin-bottom: $margin;
     /* ボタンの中身を中央合わせ */
@@ -57,6 +59,9 @@ const testTypes: Array<{
     justify-content: center;
     &__inner {
       text-align: center;
+    }
+    &:hover {
+      background-color: var(--bg-light);
     }
     &:nth-of-type(4n) {
       @media screen and (min-width: 800px) {
