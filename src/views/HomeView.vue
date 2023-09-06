@@ -3,6 +3,7 @@ import { ref } from "vue"
 import type { Ref } from "vue"
 import { fetchBookApi } from "@/assets/scripts/api"
 import type { TopCategoryResponse } from "@/assets/scripts/api"
+import TemplatesTabNavigation from '@/components/templates/TabNavigation.vue'
 import TemplatesTopCategoryTab from '@/components/templates/TopCategoryTab.vue'
 
 // TOPカテゴリー一覧を取得
@@ -12,32 +13,25 @@ const topCateogyList: Array<TopCategoryResponse> = await fetchBookApi();
 console.log(topCateogyList)
 
 // 選択中のTopカテゴリー
-const currentCategory: Ref<string> = ref('_top')
-const changeCategory = (category: string) => {
-  currentCategory.value = category
-  console.log(currentCategory.value)
+const currentCategoryId: Ref<string> = ref('_top')
+const changeCategory = (categoryId: string) => {
+  currentCategoryId.value = categoryId
 }
 </script>
 
 <template>
     <div class="p-home">
       <!-- タブナビゲーション -->
-      <nav class="p-home__nav">
-        <ul class="p-home__nav__list">
-          <li class="p-home__nav__list__item"
-            v-for="category in topCateogyList"
-            :key="`nav_${category['id_top_category']}`"
-            @click="changeCategory(category['id_top_category'])"
-            :class="{ '--active': currentCategory === category['id_top_category']}">
-            {{ category['name_category'] }}
-          </li>
-        </ul>
-      </nav>
+      <TemplatesTabNavigation
+        :topCateogyList="topCateogyList"
+        :currentCategoryId="currentCategoryId"
+        @changeCategory="changeCategory"
+      />
       <div class="p-home__tab-wrapper">
         <TemplatesTopCategoryTab 
           v-for="category in topCateogyList"
           :key="`contents_${category.id}`"
-          v-show="currentCategory === category['id_top_category']"
+          v-show="currentCategoryId === category['id_top_category']"
           :id="category['id_top_category']"
           :name="category['name_category']"
           :subCategories="category['sub_category_list']"
@@ -49,33 +43,6 @@ const changeCategory = (category: string) => {
 <style lang="scss" scoped>
 .p-home {
   overflow: hidden;
-  &__nav {
-    width: 100%;
-    background: #fff;
-    &__list {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      display: flex;
-      overflow: auto;
-      &::-webkit-scrollbar {
-        display: none;
-      }
-      &__item {
-        width: 100px;
-        flex-shrink: 0;
-        padding: 10px 0;
-        text-align: center;
-        font-size: 14px;
-        font-weight: 500;
-        color: var(--text-light);
-        cursor: pointer;
-        &.--active {
-          color: var(--text-red);
-          border-bottom: 2px solid var(--text-red);
-        }
-      }
-    }
-  }
   &__tab-wrapper {
     display: flex;
   }
