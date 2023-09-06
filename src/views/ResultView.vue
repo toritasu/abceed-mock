@@ -40,7 +40,7 @@ const books = subCategory['book_list']
 .p-result {
   ul {
     width: 100%;
-    max-width: 480px;
+    max-width: 600px;
     padding: 20px 15px 60px;
     margin: 0 auto;
     li {

@@ -43,6 +43,7 @@ console.log(props.book)
   &__cover {
     width: 90px;
     flex-shrink: 0;
+    filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.25));
     margin-right: 15px;
   }
   &__title {
