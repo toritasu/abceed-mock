@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useRoute } from 'vue-router';
 import { fetchBookApi } from "@/assets/scripts/api";
-import type { TopCategory, SubCategoryResponse, BookResponse } from "@/assets/scripts/api";
+import type { TopCategoryResponse, SubCategoryResponse, BookResponse } from "@/assets/scripts/api";
 import type { BookDetails } from "@/assets/scripts/types";
 import NavigationHeader from '@/components/common/NavigationHeader.vue';
 import TemplatesBookInfo from "@/components/templates/BookInfo.vue";
@@ -12,10 +12,10 @@ const route = useRoute();
 const id: string = route.query.id;
 
 // TopCategoryListから一意の書籍リストを作成
-const getUniqueBookList = (data: Array<TopCategory>) => {
+const getUniqueBookList = (data: Array<TopCategoryResponse>) => {
   const array = new Array()
   data.forEach(topCategory => {
-    topCategory.subCategories
+    topCategory['sub_category_list']
       .forEach((subCategory: SubCategoryResponse) => {
         array.push(...subCategory.book_list)
       });
