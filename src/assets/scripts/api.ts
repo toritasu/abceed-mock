@@ -21,20 +21,10 @@ export type BookResponse = {
   is_unlimited: number | boolean
 }
 
-// 書籍系APIのフェッチの返り値
-export type TopCategory = {
-  id: string,
-  name: string,
-  subCategories: Array<SubCategoryResponse>
-}
 // 書籍系APIのフェッチ
-export const fetchBookApi = async (): Promise<TopCategory[]> => {
+export const fetchBookApi = async (): Promise<TopCategoryResponse[]> => {
   const endpoint = "https://dev-app-api.abceed.com/mock/book/all"
   const res = await fetch(endpoint)
-  const { top_category_list: result } = await res.json()
-  return result.map((category: TopCategoryResponse) => ({
-    id: category['id_top_category'],
-    name: category['name_category'],
-    subCategories: category['sub_category_list']
-  }))
+  const { top_category_list: results } = await res.json()
+  return results
 }
