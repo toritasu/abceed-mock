@@ -1,17 +1,19 @@
 // 書籍系APIの返り値を型定義しておく
 // /mock/book/all
+export type ApiResponse = Array<TopCategoryResponse>
+// /mock/book/all > トップカテゴリー
 export type TopCategoryResponse = {
   id_top_category: string,
   name_category: string,
   sub_category_list: Array<SubCategoryResponse>
 }
-// /mock/book/all > サブカテゴリー
+// /mock/book/all > トップカテゴリー > サブカテゴリー
 export type SubCategoryResponse = {
   id_category: string,
   name_category: string,
   book_list: Array<BookResponse>
 }
-// /mock/book/all > サブカテゴリー > 書籍
+// /mock/book/all > トップカテゴリー > サブカテゴリー > 書籍
 export type BookResponse = {
   id_book: string,
   name_book: string,
