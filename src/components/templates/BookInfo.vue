@@ -1,24 +1,21 @@
 <script setup lang="ts">
 import { storeToRefs } from "pinia"
 import { useMybookStore } from '@/stores/mybook.ts';
-import type { BookDetails, BookCard } from "@/assets/scripts/types";
+import type { BookResponse } from "@/assets/scripts/api";
 
 const { book } = defineProps<{
-  book: BookDetails
+  book: BookResponse
 }>();
 
 // MyBooksの状態管理
 const mybookStore = useMybookStore();
 const { isMybook } = storeToRefs(mybookStore);
 
-const addToMybooks = (book: BookDetails) => {
-  const bookcard: BookCard = {
-    id: book.id,
-    imgUrl: book.imgUrl
-  }
-  mybookStore.add(bookcard)
+const addToMybooks = (book: BookResponse) => {
+  mybookStore.add(book)
 }
 const removeFromMyBooks = (bookId: string) => {
+
   mybookStore.remove(bookId)
 }
 
@@ -26,9 +23,9 @@ const removeFromMyBooks = (bookId: string) => {
 
 <template>
   <div class="c-bookinfo">
-    <img class="c-bookinfo__cover" :src="book.imgUrl" :alt="book.title" />
+    <img class="c-bookinfo__cover" :src="book['img_url']" :alt="book['name_book']" />
     <div class="c-bookinfo__info">
-      <h2 class="c-bookinfo__title">{{ book.title }}</h2>
+      <h2 class="c-bookinfo__title">{{ book['name_book'] }}</h2>
       <dl class="c-bookinfo__item">
         <dt>著者</dt>
         <dd>{{ book.author }}</dd>
@@ -40,14 +37,14 @@ const removeFromMyBooks = (bookId: string) => {
       <div class="c-bookinfo__btn-wrapper">
         <!-- MyBook:未追加 -->
         <button
-          v-if="!isMybook(book.id)"
+          v-if="!isMybook(book['id_book'])"
           class="c-bookinfo__btn"
           @click="addToMybooks(book)">MyBooks追加</button>
         <!-- MyBook:追加済み -->
         <button
-          v-if="isMybook(book.id)"
+          v-if="isMybook(book['id_book'])"
           class="c-bookinfo__btn --active"
-          @click="removeFromMyBooks(book.id)">MyBooks削除</button>
+          @click="removeFromMyBooks(book['id_book'])">MyBooks削除</button>
         <!-- Unlimited対象 -->
         <button class="c-bookinfo__btn --active">
           {{ book.isUnlimited ? '読み放題中' : '購入する' }}

@@ -1,25 +1,25 @@
 import { defineStore } from "pinia";
-import type { BookCard } from "@/assets/scripts/types.ts"
+import type { BookResponse } from "@/assets/scripts/api.ts"
 
 export const useMybookStore = defineStore('mybook', {
   state: () => ({
-    mybooks: [] as Array<BookCard>
+    mybooks: [] as Array<BookResponse>
   }),
   getters: {
     isMybook(state) {
       return (bookId: string): boolean => {
         return state.mybooks
-          .find((book: BookCard) => book.id === bookId)
+          .find((book: BookResponse) => book['id_book'] === bookId)
       }
     }
   },
   actions: {
-    add(bookcard: BookCard) {
-      this.mybooks.push(bookcard);
+    add(book: BookResponse) {
+      this.mybooks.push(book);
     },
     remove(bookId: string) {
       const index = this.mybooks
-        .some((mybook: BookCard, i: number) => {
+        .some((mybook: BookResponse, i: number) => {
           if(mybook.id === bookId) this.mybooks.splice(i, 1)
         });
     }

@@ -2,7 +2,6 @@
 import { useRoute } from 'vue-router';
 import { fetchBookApi } from "@/assets/scripts/api";
 import type { TopCategoryResponse, SubCategoryResponse, BookResponse } from "@/assets/scripts/api";
-import type { BookDetails } from "@/assets/scripts/types";
 import NavigationHeader from '@/components/common/NavigationHeader.vue';
 import TemplatesBookInfo from "@/components/templates/BookInfo.vue";
 import TemplatesBookTestTypes from "@/components/templates/BookTestTypes.vue";
@@ -24,24 +23,17 @@ const getUniqueBookList = (data: Array<TopCategoryResponse>) => {
 }
 // 一意の書籍リストから目的の書籍を抽出
 const findBookById = (uniqueBookList: Array<BookResponse>, id: string) => {
-  const book: BookResponse = uniqueBookList
+  const book: BookResponse | undefined = uniqueBookList
     .find((book: BookResponse) => book.id_book === id);
   if(!book) throw new Error('お探しの書籍はありません')
-  return {
-    id: book.id_book,
-    title: book.name_book,
-    author: book.author,
-    publisher: book.publisher,
-    imgUrl: book.img_url,
-    isUnlimited: book.is_unlimited === 1 ? true : false
-  }
+  return book
 }
 // 1.書籍リスト取得APIをフェッチ
-const topCateogyList: Array<TopCategory> = await fetchBookApi();
+const topCateogyList: Array<TopCategoryResponse> = await fetchBookApi();
 // 2.一意の書籍リストを作成
 const uniqueBookList: Array<Object> = getUniqueBookList(topCateogyList);
 // 3.目的の書籍を抽出しフォーマット
-const book: BookDetails = await findBookById(uniqueBookList, id)
+const book: BookResponse = await findBookById(uniqueBookList, id)
 console.log('書籍詳細', book)
 
 </script>

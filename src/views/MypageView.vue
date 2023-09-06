@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { storeToRefs } from "pinia";
 import { useMybookStore } from '@/stores/mybook.ts';
 import NavigationHeader from '@/components/common/NavigationHeader.vue';
-import PartsBookCard from '@/components/parts/BookCard.vue';
+import PartsBookBlock from '@/components/parts/BookBlock.vue';
 
 const { mybooks } = useMybookStore();
+console.log(mybooks)
 </script>
 
 <template>
@@ -12,7 +12,7 @@ const { mybooks } = useMybookStore();
     <NavigationHeader>MyBook</NavigationHeader>
     <div class="p-mypage__contents">
       <div v-if="mybooks.length > 0" class="p-mypage__mybooks">
-        <PartsBookCard v-for="(book,index) in mybooks" :key="index" :book="book"/>
+        <PartsBookBlock v-for="(book,index) in mybooks" :key="index" :book="book"/>
       </div>
       <div v-else class="p-mypage__message">
         お気に入りの書籍をMyBookに登録しよう！
@@ -29,6 +29,7 @@ const { mybooks } = useMybookStore();
     background-color: var(--bg-main);
   }
   &__contents {
+    background: var(--bg-light);
   }
   &__mybooks {
     max-width: var(--max-width);

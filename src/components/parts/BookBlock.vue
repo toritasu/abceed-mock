@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { BookDetails } from "@/assets/scripts/types";
+import type { BookResponse } from "@/assets/scripts/api";
 
 const props = defineProps<{
   book: BookDetails

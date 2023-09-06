@@ -5,7 +5,7 @@
   <div class="c-nav-header">
     <div class="c-nav-header__inner">
       <router-link to="/" class="c-nav-header__prev">
-        <img class="c-nav-header__" src="@/assets/images/chevron-left.svg">
+        <img src="@/assets/images/chevron-left.svg">
         <slot />
       </router-link>
     </div>

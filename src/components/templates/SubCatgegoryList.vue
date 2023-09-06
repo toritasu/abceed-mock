@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import PartsBookCard from "@/components/parts/BookCard.vue"
-import type { BookCard, BookDetails } from "@/assets/scripts/api.ts"
+import type { BookResponse } from "@/assets/scripts/api.ts"
 
 const props = defineProps<{
   id: string,
   name: string,
-  books: Array<BookDetails>,
+  books: Array<BookResponse>,
   parentId: string
 }>();
 
@@ -14,7 +14,7 @@ const subCategoryId = props.id
 const topCategoryId = props.parentId
 const name = props.name
 const books: BookCard = props.books
-  .map((book: BookDetails) => ({
+  .map((book: BookResponse) => ({
     id: book['id_book'],
     imgUrl: book['img_url']
   }));
