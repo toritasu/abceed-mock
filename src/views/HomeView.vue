@@ -48,7 +48,6 @@ const changeCategory = (category: string) => {
 
 <style lang="scss" scoped>
 .p-home {
-  width: 100%;
   overflow: hidden;
   &__nav {
     width: 100%;
