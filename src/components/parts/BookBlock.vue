@@ -1,11 +1,8 @@
 <script setup lang="ts">
 import type { BookResponse } from "@/assets/scripts/api";
-
 const props = defineProps<{
-  book: BookDetails
+  book: BookResponse
 }>();
-
-console.log(props.book)
 </script>
 
 <template>
