@@ -8,7 +8,7 @@ import TheHeader from '@/components/common/TheHeader.vue';
   <Suspense>
     <RouterView v-slot={Component} class="l-main">
       <Transition>
-        <KeepAlive>
+        <KeepAlive include="HomeView">
           <component :is="Component" />
         </KeepAlive>
       </Transition>
