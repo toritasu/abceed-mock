@@ -70,7 +70,7 @@ console.log(props.book)
     }
     dd {
       font-size: 12px;
-      font-weight: 600;
+      font-weight: 500;
       padding: 1px 0;
       color: var(--text-light);
     }
