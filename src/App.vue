@@ -1,6 +1,13 @@
 <script setup lang="ts">
-import { RouterView } from 'vue-router';
 import TheHeader from '@/components/common/TheHeader.vue';
+import { RouterView } from 'vue-router';
+import { useMybookStore } from '@/stores/mybook.ts';
+import { user } from "@/assets/data/sampleUser.json"; // 仮のユーザーテーブル
+
+// ログイン中ユーザーのMyBookリストをフェッチ
+const mybookStore = useMybookStore();
+mybookStore.fetch(user);
+
 </script>
 
 <template>

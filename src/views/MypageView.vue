@@ -3,7 +3,8 @@ import { useMybookStore } from '@/stores/mybook.ts';
 import NavigationHeader from '@/components/common/NavigationHeader.vue';
 import PartsBookBlock from '@/components/parts/BookBlock.vue';
 
-const { mybooks } = useMybookStore();
+const mybookStore = useMybookStore();
+const mybooks = mybookStore.mybooks
 console.log(mybooks)
 </script>
 

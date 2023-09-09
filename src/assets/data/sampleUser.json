@@ -1,0 +1,22 @@
+{
+  "user": {
+    "id": "HZeTDQtXgwqo",
+    "name": "TAK",
+    "email": "tt.tuttofare@gmail.com",
+    "password": "abcdefg",
+    "mybooks": [
+      {
+        "id_book": "crossmedia_phonics_listening",
+        "author": "ジュミック 今井 (著)",
+        "conent_type": "book",
+        "create_at": "2022-09-05",
+        "has_contents": 6,
+        "has_purchased": false,
+        "img_url": "https://d3grtcc7imzgqe.cloudfront.net/img/book_dev/crossmedia_phonics_listening.jpg",
+        "is_unlimited": 1,
+        "name_book": "フォニックス英語リスニング",
+        "publisher": "クロスメディア・ランゲージ"
+      }
+    ]
+  }
+}
