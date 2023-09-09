@@ -6,7 +6,16 @@ import TheHeader from '@/components/common/TheHeader.vue';
 <template>
   <TheHeader class="l-header" />
   <Suspense>
-    <RouterView class="l-main" />
+    <RouterView v-slot={Component} class="l-main">
+      <Transition>
+        <KeepAlive>
+          <component :is="Component" />
+        </KeepAlive>
+      </Transition>
+    </RouterView>
+    <template #fallback>
+      Loading...
+    </template>
   </Suspense>
 </template>
 
