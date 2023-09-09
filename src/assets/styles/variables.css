@@ -1,6 +1,7 @@
 :root {
   --max-width: calc(90px * 8 + 15px * 7 + 15px);
   --header-height: 50px;
+  --nav-height: 40px;
   /* ライトモードの色変数 */
   --text-main: #100D00;
   --text-light: #787878;

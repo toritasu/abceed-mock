@@ -29,9 +29,11 @@ const changeCategory = (categoryId: string) => {
 <style lang="scss" scoped>
 .c-tab-nav {
   width: 100%;
+  height: var(--nav-height);
   background: var(--bg-main);
   &__list {
     max-width: var(--max-width);
+    height: 100%;
     margin: 0 auto;
     display: flex;
     overflow: auto;
@@ -40,8 +42,8 @@ const changeCategory = (categoryId: string) => {
     }
     &__item {
       width: 100px;
+      line-height: var(--nav-height);
       flex-shrink: 0;
-      padding: 10px 0;
       text-align: center;
       font-size: 14px;
       font-weight: 500;

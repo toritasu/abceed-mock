@@ -15,7 +15,7 @@
 <style lang="scss" scoped>
 .c-nav-header {
   width: 100%;
-  height: 50px;
+  height: var(--nav-height);
   background-color: var(--bg-main);
   &__inner {
     width: 100%;
@@ -28,6 +28,8 @@
     justify-content: space-between;
   }
   &__prev {
+    font-size: 14px;
+    font-weight: 500;
     display: flex;
     align-items: center;
     img {
