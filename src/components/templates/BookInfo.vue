@@ -44,10 +44,14 @@ const removeFromMyBooks = (bookId: string) => {
           v-if="isMybook(book['id_book'])"
           class="c-bookinfo__btn --active"
           @click="removeFromMyBooks(book['id_book'])">MyBooks削除</button>
-        <!-- Unlimited対象 -->
-        <button class="c-bookinfo__btn --active">
-          {{ book.isUnlimited ? '読み放題中' : '購入する' }}
-        </button>
+        <!-- 購入: Unlimited 対象外 -->
+        <button
+          v-if="!book['is_unlimited']"
+          class="c-bookinfo__btn">購入する</button>
+        <!-- 購入: Unlimited 対象 -->
+        <button
+          v-if="book['is_unlimited']"
+          class="c-bookinfo__btn --active">読み放題中</button>
       </div>
     </div>
   </div>
@@ -95,7 +99,7 @@ const removeFromMyBooks = (bookId: string) => {
     }
     dd {
       font-size: 12px;
-      font-weight: 600;
+      font-weight: 500;
       padding: 1px 0;
       color: var(--text-light);
     }
