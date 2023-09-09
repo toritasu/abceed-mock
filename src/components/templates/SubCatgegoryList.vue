@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import PartsBookCard from "@/components/parts/BookCard.vue"
-import type { BookResponse } from "@/assets/scripts/api.ts"
+import type { BookResponse, BookCard } from "@/assets/scripts/api.ts"
 
 const props = defineProps<{
   id: string,
   name: string,
-  books: Array<BookResponse>,
+  books: BookResponse[],
   parentId: string
 }>();
 

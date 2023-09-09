@@ -11,7 +11,7 @@ const route = useRoute();
 const id: string = route.query.id;
 
 // TopCategoryListから一意の書籍リストを作成
-const getUniqueBookList = (data: Array<TopCategoryResponse>) => {
+const getUniqueBookList = (data: TopCategoryResponse[]) => {
   const array = new Array()
   data.forEach(topCategory => {
     topCategory['sub_category_list']
@@ -22,16 +22,16 @@ const getUniqueBookList = (data: Array<TopCategoryResponse>) => {
   return Array.from(new Set(array))
 }
 // 一意の書籍リストから目的の書籍を抽出
-const findBookById = (uniqueBookList: Array<BookResponse>, id: string) => {
+const findBookById = (uniqueBookList: BookResponse[], id: string) => {
   const book: BookResponse | undefined = uniqueBookList
     .find((book: BookResponse) => book.id_book === id);
   if(!book) throw new Error('お探しの書籍はありません')
   return book
 }
 // 1.書籍リスト取得APIをフェッチ
-const topCateogyList: Array<TopCategoryResponse> = await fetchBookApi();
+const topCateogyList: TopCategoryResponse[] = await fetchBookApi();
 // 2.一意の書籍リストを作成
-const uniqueBookList: Array<Object> = getUniqueBookList(topCateogyList);
+const uniqueBookList: BookResponse[] = getUniqueBookList(topCateogyList);
 // 3.目的の書籍を抽出しフォーマット
 const book: BookResponse = await findBookById(uniqueBookList, id)
 console.log('書籍詳細', book)

@@ -3,9 +3,9 @@
 // 本来は、書籍詳細オブジェクトに識別データが含まれていると思われる
 // 想定1: [ 'app', 'test' ]
 // 想定2: test_types { app: true, test: true, audio: false, sw: false, ... }
-const testTypes: Array<{
+const testTypes: {
   label: string, icon: string
-}> = [
+}[] = [
   { label: 'アプリ学習', icon: 'icon_study_quiz.svg' },
   { label: 'テスト', icon: 'icon_study_test.svg' },
   { label: '音声(無料)', icon: 'icon_study_sound.svg' },

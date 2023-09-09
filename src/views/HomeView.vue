@@ -9,7 +9,7 @@ import TemplatesTopCategoryTab from '@/components/templates/TopCategoryTab.vue'
 // TOPカテゴリー一覧を取得
 // App.vueで実行
 // ナビのプロパティとTopCategoryTabコンポーネントのpropsとなる
-const topCateogyList: Array<TopCategoryResponse> = await fetchBookApi();
+const topCateogyList: TopCategoryResponse[] = await fetchBookApi();
 console.log(topCateogyList)
 
 // 選択中のTopカテゴリー

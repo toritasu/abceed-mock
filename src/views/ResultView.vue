@@ -10,7 +10,7 @@ const route = useRoute();
 const topCategoryId: string = route.query.top;
 const subCategoryId: string = route.query.sub;
 
-const topCateogyList: Array<TopCategoryResponse> = await fetchBookApi();
+const topCateogyList: TopCategoryResponse[] = await fetchBookApi();
 
 const topCategory: TopCategoryResponse | undefined = topCateogyList
   .find(topCategory => topCategory['id_top_category'] === topCategoryId)

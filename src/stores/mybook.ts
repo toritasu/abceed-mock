@@ -3,7 +3,7 @@ import type { BookResponse } from "@/assets/scripts/api.ts"
 
 export const useMybookStore = defineStore('mybook', {
   state: () => ({
-    mybooks: [] as Array<BookResponse>
+    mybooks: [] as BookResponse[]
   }),
   getters: {
     isMybook(state) {
