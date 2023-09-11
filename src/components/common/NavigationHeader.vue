@@ -13,14 +13,15 @@
 </template>
 
 <style lang="scss" scoped>
+@use "@/assets/styles/variables.scss" as var;
 .c-nav-header {
   width: 100%;
-  height: var(--nav-height);
+  height: var.$navHeight;
   background-color: var(--bg-main);
   &__inner {
     width: 100%;
     height: 100%;
-    max-width: var(--max-width);
+    max-width: var.$headerWidth;
     margin: 0 auto;
     padding: 0 15px;
     display: flex;

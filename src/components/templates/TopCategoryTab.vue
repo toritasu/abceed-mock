@@ -22,9 +22,10 @@ const props = defineProps<{
 </template>
 
 <style lang="scss" scoped>
+@use "@/assets/styles/variables.scss" as var;
 .c-topcategory {
   width: 100%;
-  max-width: var(--max-width);
+  max-width: var.$homeViewWidth;
   padding: 20px 0;
   margin: 0 auto;
 }

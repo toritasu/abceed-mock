@@ -34,18 +34,5 @@ const books = subCategory['book_list']
 
 <style lang="scss" scoped>
 .p-result {
-  ul {
-    width: 100%;
-    max-width: 600px;
-    padding: 20px 15px 60px;
-    margin: 0 auto;
-    li {
-      border-radius: 10px;
-      &:last-child {
-        margin-bottom: 0;
-      }
-    }
-  }
 }
-
 </style>

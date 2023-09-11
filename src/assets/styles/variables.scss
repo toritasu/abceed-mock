@@ -1,7 +1,19 @@
+$headerHeight: 50px;
+$headerWidth: 960px;
+
+$navHeight: 40px;
+
+$bookCardWidth: 90px;
+$bookCardCount: 6;
+$homeViewWidth: calc($bookCardWidth * $bookCardCount + 15px * ($bookCardCount - 1) + 15px);
+
+$bookInfoWidth: 450px;
+$testIconSize: 70px;
+$testIconMargin: 15px;
+$testPanelWidth: calc($testIconSize * 4 + $testIconMargin * 3 + (20px * 2));
+$bookViewWidth: calc($bookInfoWidth + $testPanelWidth);
+
 :root {
-  --max-width: calc(90px * 8 + 15px * 7 + 15px);
-  --header-height: 50px;
-  --nav-height: 40px;
   /* ライトモードの色変数 */
   --text-main: #100D00;
   --text-light: #787878;

@@ -24,7 +24,7 @@ const books: BookCard = props.books
   <div class="c-subcategory">
     <div class="c-subcategory__header">
       <h3>{{ name }}</h3>
-      <router-link :to="`/search/?top=${topCategoryId}&sub=${subCategoryId}`">
+      <router-link v-if="books.length > 6" :to="`/search/?top=${topCategoryId}&sub=${subCategoryId}`">
         <img class="c-nav-header__" src="@/assets/images/chevron-right.svg">
       </router-link>
     </div>
@@ -35,6 +35,7 @@ const books: BookCard = props.books
 </template>
 
 <style lang="scss" scoped>
+@use "@/assets/styles/variables.scss" as var;
 .c-subcategory {
   width: 100%;
   margin-bottom: 30px;
@@ -54,10 +55,23 @@ const books: BookCard = props.books
     display: flex;
     overflow-y: hidden;
     overflow-x: auto;
-    & > .c-bookcard {
+    @media screen and (min-width: calc(var.$homeViewWidth + 15px)) {
+      overflow-x: hidden;
+    }
+    & > * {
       margin-right: 15px;
-      &:last-child {
-        margin-right: 0;
+      &:last-child { margin-right: 0; }
+      opacity: 0;
+      transform: translateX(20px);
+      animation: slideUp 0.5s ease-out forwards;
+      @for $i from 1 through 10 {
+        &:nth-child(#{$i}) {
+          animation-delay: calc(0.1s * ($i - 1));
+        }
+      }
+      @keyframes slideUp {
+        from { transform: translateX(20px); opacity: 0 }
+        to { transform: translateY(0); opacity: 1 }
       }
     }
   }

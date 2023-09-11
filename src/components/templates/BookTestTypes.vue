@@ -31,28 +31,27 @@ const testTypes: {
 </template>
 
 <style lang="scss">
+@use "@/assets/styles/variables.scss" as var;
 .c-test-types {
-  $size: 70px;
-  $margin: 15px;
-  padding: 15px;
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
   flex-wrap: wrap;
-  @media screen and (min-width: 805px) {
+  padding: 20px;
+  @media screen and (min-width: var.$bookViewWidth) {
     padding-top: 0;
-    max-width: calc($size * 4 + $margin * 3 + 15px * 2);
+    max-width: var.$testPanelWidth;
   }
   &__item {
-    width: $size;
+    width: var.$testIconSize;
     aspect-ratio: 1 / 1;
     flex-shrink: 0;
     background-color: var(--bg-main);
     border: 1px solid #ddd;
     border-radius: 5px;
     cursor: pointer;
-    margin-right: $margin;
-    margin-bottom: $margin;
+    margin-right: var.$testIconMargin;
+    margin-bottom: var.$testIconMargin;
     /* ボタンの中身を中央合わせ */
     display: flex;
     align-items: center;
@@ -64,14 +63,10 @@ const testTypes: {
       background-color: var(--bg-light);
     }
     &:nth-of-type(4n) {
-      @media screen and (min-width: 800px) {
-        margin-right: 0;
-      }
+      margin-right: 0;
     }
     &:nth-last-of-type(-n + 4) {
-      @media screen and (min-width: 800px) {
-        margin-bottom: 0;
-      }
+      margin-bottom: 0;
     }
     &__icon {
       width: 40px;

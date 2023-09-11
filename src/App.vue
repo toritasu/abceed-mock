@@ -26,7 +26,8 @@ mybookStore.fetch(user);
   </Suspense>
 </template>
 
-<style>
+<style lang="scss">
+@use "@/assets/styles/variables.scss" as var;
 .l-header {
   width: 100vw;
   position: fixed;
@@ -36,7 +37,7 @@ mybookStore.fetch(user);
 }
 .l-main {
   width: 100%;
-  padding-top: var(--header-height);
+  padding-top: var.$headerHeight;
   min-height: 100vh;
   background: var(--bg-light);
 }

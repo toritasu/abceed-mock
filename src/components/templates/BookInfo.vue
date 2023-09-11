@@ -64,9 +64,6 @@ const removeFromMyBooks = (bookId: string) => {
   align-items: flex-start;
   width: 100%;
   padding: 15px;
-  @media screen and (min-width: 768px) {
-    max-width: 450px;
-  }
   &__cover {
     width: 90px;
     flex-shrink: 0;

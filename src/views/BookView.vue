@@ -44,22 +44,41 @@ console.log('書籍詳細', book)
     <NavigationHeader>書籍詳細</NavigationHeader>
     <div class="p-book__contents">
       <!-- 書籍情報 -->
-      <TemplatesBookInfo :book="book" />
+      <TemplatesBookInfo :book="book" class="p-book__contents__info" />
       <!-- テストタイプ -->
-      <TemplatesBookTestTypes />
+      <TemplatesBookTestTypes class="p-book__contents__types"  />
     </div>
   </div>
 </template>
 
 <style lang="scss">
+@use "@/assets/styles/variables.scss" as var;
 .p-book {
   &__contents {
     display: block;
-    @media screen and (min-width: 805px) {
+    @media screen and (min-width: var.$bookViewWidth) {
       display: flex;
       align-items: flex-start;
       justify-content: center;
       padding: 20px 0;
+    }
+    &__info {
+      max-width: var.$bookInfoWidth;
+      @media screen and (min-width: var.$bookInfoWidth) {
+        margin: 20px auto 0;
+      }
+      @media screen and (min-width: var.$bookViewWidth) {
+        margin: 0;
+      }
+    }
+    &__types {
+      @media screen and (min-width: var.$bookInfoWidth) {
+        max-width: var.$testPanelWidth;
+        margin: 0 auto;
+      }
+      @media screen and (min-width: var.$bookViewWidth) {
+        margin: 0;
+      }
     }
   }
 }

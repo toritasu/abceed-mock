@@ -27,12 +27,13 @@ const changeCategory = (categoryId: string) => {
 </template>
 
 <style lang="scss" scoped>
+@use "@/assets/styles/variables.scss" as var;
 .c-tab-nav {
   width: 100vw;
-  height: var(--nav-height);
+  height: var.$navHeight;
   background: var(--bg-main);
   &__list {
-    max-width: var(--max-width);
+    max-width: var.$homeViewWidth;
     height: 100%;
     margin: 0 auto;
     display: flex;
@@ -42,7 +43,7 @@ const changeCategory = (categoryId: string) => {
     }
     &__item {
       width: 100px;
-      line-height: var(--nav-height);
+      line-height: var.$navHeight;
       flex-shrink: 0;
       text-align: center;
       font-size: 14px;

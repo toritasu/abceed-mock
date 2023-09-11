@@ -1,4 +1,4 @@
-import './assets/styles/variables.css'
+import './assets/styles/variables.scss'
 import './assets/styles/destyle.css'
 import './assets/styles/base.css'
 

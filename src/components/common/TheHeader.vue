@@ -21,11 +21,12 @@
 </template>
 
 <style lang="scss" scoped>
+@use "@/assets/styles/variables.scss" as var;
 .c-header {
-  height: var(--header-height);
+  height: var.$headerHeight;
   background-color: var(--bg-main);
   &__inner {
-    max-width: var(--max-width);
+    max-width: var.$headerWidth;
     margin: 0 auto;
     padding: 0 15px;
     height: 100%;
