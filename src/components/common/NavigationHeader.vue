@@ -21,7 +21,7 @@
   &__inner {
     width: 100%;
     height: 100%;
-    max-width: var.$headerWidth;
+    max-width: max(var.$homeViewWidth, var.$bookViewWidth);
     margin: 0 auto;
     padding: 0 15px;
     display: flex;

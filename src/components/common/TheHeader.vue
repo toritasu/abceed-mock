@@ -26,7 +26,8 @@
   height: var.$headerHeight;
   background-color: var(--bg-main);
   &__inner {
-    max-width: var.$headerWidth;
+    width: 100%;
+    max-width: max(var.$homeViewWidth, var.$bookViewWidth);
     margin: 0 auto;
     padding: 0 15px;
     height: 100%;
