@@ -28,7 +28,7 @@ const changeCategory = (categoryId: string) => {
 
 <style lang="scss" scoped>
 .c-tab-nav {
-  width: 100%;
+  width: 100vw;
   height: var(--nav-height);
   background: var(--bg-main);
   &__list {

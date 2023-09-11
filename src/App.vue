@@ -35,7 +35,7 @@ mybookStore.fetch(user);
   left: 0;
 }
 .l-main {
-  width: 100vw;
+  width: 100%;
   padding-top: var(--header-height);
   min-height: 100vh;
   background: var(--bg-light);
