@@ -34,10 +34,11 @@ const changeCategory = (categoryId: string) => {
   background: var(--bg-main);
   &__list {
     width: 100%;
+    max-width: var.$homeViewWidth;
     height: 100%;
     margin: 0 auto;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     overflow: auto;
     &::-webkit-scrollbar {
       display: none;
