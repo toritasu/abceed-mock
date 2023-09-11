@@ -3,7 +3,7 @@ import { useRoute } from 'vue-router';
 import { fetchBookApi } from "@/assets/scripts/api"
 import type { TopCategoryResponse, SubCategoryResponse } from "@/assets/scripts/api"
 import NavigationHeader from '@/components/common/NavigationHeader.vue';
-import PartsBookBlock from '@/components/parts/BookBlock.vue';
+import TemplatesBookBlockList from '@/components/templates/BookBlockList.vue';
 
 // クエリから書籍IDを取得する
 const route = useRoute();
@@ -28,11 +28,7 @@ const books = subCategory['book_list']
     <NavigationHeader>
       {{ topCategoryName }} − {{ subCategoryName }}
     </NavigationHeader>
-    <ul>
-      <li v-for="book in books" :key="book['book_id']">
-        <PartsBookBlock :book="book" />
-      </li>
-    </ul>
+    <TemplatesBookBlockList v-if="books.length > 0" :books="books" />
   </div>
 </template>
 

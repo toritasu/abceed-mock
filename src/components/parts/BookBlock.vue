@@ -28,7 +28,6 @@ const props = defineProps<{
 
 <style lang="scss" scoped>
 .c-bookblock {
-  margin-bottom: 20px;
   color: var(--text-main);
   background-color: var(--bg-main);
   padding: 15px;
