@@ -42,6 +42,11 @@ const props = defineProps<{
     flex-shrink: 0;
     filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.25));
     margin-right: 15px;
+    opacity: 1;
+    transition: opacity 0.2s ease-out;
+  }
+  &:hover &__cover {
+    opacity: 0.7;
   }
   &__title {
     font-size: 16px;

@@ -21,5 +21,10 @@ const { book } = defineProps<{
   flex-shrink: 0;
   filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.25));
   img { width: 100%;}
+  opacity: 1;
+  transition: opacity 0.2s ease-out;
+  &:hover {
+    opacity: 0.7;
+  }
 }
 </style>
