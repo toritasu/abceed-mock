@@ -9,25 +9,25 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: '書籍一覧',
+      name: 'home',
       component: HomeView,
       meta: { title: 'abceed | 書籍一覧', desc: '' }
     },
     {
       path: '/book/',
-      name: '書籍詳細',
+      name: 'book',
       component:  BookView,
       meta: { title: 'abceed | 書籍詳細', desc: '' }
     },
     {
       path: '/mypage/',
-      name: 'マイページ',
+      name: 'mypage',
       component:  MypageView,
       meta: { title: 'abceed | マイページ', desc: '' }
     },
     {
       path: '/search/',
-      name: '検索結果',
+      name: 'search',
       component:  ResultView,
       meta: { title: 'abceed | 検索結果', desc: '' }
     }
