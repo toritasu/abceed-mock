@@ -14,7 +14,7 @@ const router = createRouter({
       meta: { title: 'abceed | 書籍一覧', desc: '' }
     },
     {
-      path: '/book/',
+      path: '/book/:id',
       name: 'book',
       component:  BookView,
       meta: { title: 'abceed | 書籍詳細', desc: '' }

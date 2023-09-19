@@ -8,7 +8,7 @@ const { book } = defineProps<{
 
 <template>
   <div class="c-bookcard">
-    <router-link :to="`/book/?id=${book.id}`">
+    <router-link :to="`/book/${book.id}`">
       <img :src="book.imgUrl" loading="lazy" />
     </router-link>
   </div>

@@ -8,7 +8,7 @@ import TemplatesBookTestTypes from "@/components/templates/BookTestTypes.vue";
 
 // クエリから書籍IDを取得する
 const route = useRoute();
-const id: string = route.query.id;
+const id: string = route.params.id;
 
 // TopCategoryListから一意の書籍リストを作成
 const getUniqueBookList = (data: TopCategoryResponse[]) => {

@@ -7,7 +7,7 @@ const props = defineProps<{
 
 <template>
   <div class="c-bookblock">
-    <router-link :to="`/book/?id=${book['id_book']}`">
+    <router-link :to="`/book/${book['id_book']}`">
       <div class="c-bookblock__inner">
         <img class="c-bookblock__cover" :src="book['img_url']" />
         <div>
